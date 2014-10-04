@@ -10,8 +10,10 @@ import org.junit.Test;
 public class OrderFromBoss {
 
     // このメソッドはあまりよくない。
-    // estimateSize()の結果がLong.MAX_VALUEだったとしても、
-    // 必ずしも無限ストリームであるわけではないため。
+    // spliterator()が終端操作であるため、
+    // 未使用のストリームを終了させてしまう or 使用済みのストリームでエラーになってしまう。
+    // また、estimateSize()の結果がLong.MAX_VALUEだったとしても、
+    // 必ずしも無限ストリームであるわけではない。
     public static <T> boolean isFinite(Stream<T> stream) {
         return stream.spliterator().estimateSize() != Long.MAX_VALUE;
     }
@@ -20,6 +22,7 @@ public class OrderFromBoss {
     public void testIsFinite() {
         Stream<Double> finite = Stream.of(0.1, 0.2, 0.3);
         assertTrue(isFinite(finite));
+        finite.count();
 
         Stream<Double> infinite = Stream.generate(Math::random);
         assertFalse(isFinite(infinite));

@@ -1,9 +1,8 @@
 package ch02.ex09;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -61,20 +60,20 @@ public class MergeArrayListStream {
     public void testMerge1() {
         ArrayList<String> result = merge1(createTarget());
         String[] expected = createExpected();
-        assertTrue(Arrays.equals(result.toArray(), expected));
+        assertArrayEquals(result.toArray(), expected);
     }
 
     @Test
     public void testMerge2() {
         ArrayList<String> result = merge2(createTarget());
         String[] expected = createExpected();
-        assertTrue(Arrays.equals(result.toArray(), expected));
+        assertArrayEquals(result.toArray(), expected);
     }
 
     @Test
     public void testMerge3() {
         ArrayList<String> result = merge3(createTarget());
         String[] expected = createExpected();
-        assertTrue(Arrays.equals(result.toArray(), expected));
+        assertArrayEquals(result.toArray(), expected);
     }
 }

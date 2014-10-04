@@ -1,9 +1,8 @@
 package ch02.ex08;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -31,6 +30,6 @@ public class ZipStream {
 
         Integer[] expected = { 1, 2, 3, 4, 5, 6, 7, 8 };
         Integer[] actual = zipped.toArray(Integer[]::new);
-        assertTrue(Arrays.equals(expected, actual));
+        assertArrayEquals(expected, actual);
     }
 }
