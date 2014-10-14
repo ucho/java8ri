@@ -1,6 +1,7 @@
-package ch03.ex23;
+package ch03.ex24;
 
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class Pair<T> {
 
@@ -25,7 +26,7 @@ public class Pair<T> {
         return array;
     }
 
-    public static <U, R> Pair<R> map(Pair<U> target, Function<U, R> f) {
-        return new Pair<R>(f.apply(target.getFirst()), f.apply(target.getSecond()));
+    public <R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper) {
+        return Stream.concat(mapper.apply(first), mapper.apply(second));
     }
 }
