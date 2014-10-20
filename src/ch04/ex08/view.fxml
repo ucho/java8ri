@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import ch04.ex08.Controller?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ch04.ex08.Controller">
+  <top>
+    <HBox alignment="CENTER">
+      <children>
+        <Button fx:id="topButton" text="Top" />
+      </children>
+    </HBox>
+  </top>
+  <left>
+    <Button fx:id="leftButton" text="Left" />
+  </left>
+  <center>
+    <Button fx:id="centerButton" text="Center" />
+  </center>
+  <right>
+    <Button fx:id="rightButton" text="Right" />
+  </right>
+  <bottom>
+    <HBox alignment="CENTER">
+      <children>
+        <Button fx:id="bottomButton" text="Bottom" />
+      </children>
+    </HBox>
+  </bottom>
+</BorderPane>
