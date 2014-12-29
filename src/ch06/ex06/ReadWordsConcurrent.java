@@ -21,6 +21,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
+// 練習問題5:mergeを使った場合と比べての利点 -> 毎回Setを生成しなくてよい: 計算コストが小さくて済む
 public class ReadWordsConcurrent {
 
     private Set<File> files;
