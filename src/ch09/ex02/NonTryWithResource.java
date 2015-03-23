@@ -1,14 +1,17 @@
-package ch09.ex01;
+package ch09.ex02;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class NonTryWithResource {
 
     public static void main(String[] args) {
+        Exception inCloseException = null;
+        Exception outCloseException = null;
         try {
             Scanner in = null;
             PrintWriter out = null;
@@ -25,15 +28,31 @@ public class NonTryWithResource {
                 }
             } finally {
                 if (in != null) {
-                    in.close();
+                    try {
+                        in.close();
+                    } catch (IllegalStateException e) {
+                        inCloseException = e;
+                    }
                 }
                 if (out != null) {
-                    out.close();
+                    try {
+                        out.close();
+                    } catch (Exception e) {
+                        outCloseException = e;
+                    }
                 }
             }
         } catch (IOException e) {
+            if (inCloseException != null) {
+                e.addSuppressed(inCloseException);
+            }
+            if (outCloseException != null) {
+                e.addSuppressed(outCloseException);
+            }
             // catch constructors, in.close(), out.close()
             System.err.println(e);
+            Arrays.stream(e.getSuppressed()).forEach(System.err::println);
         }
     }
+
 }
