@@ -5,10 +5,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Objects;
 
 public class ReverseLetters {
 
     public static void convert(Path from, Path to) throws IOException {
+        Objects.requireNonNull(from);
+        Objects.requireNonNull(to);
+
         byte[] bytes = Files.readAllBytes(from);
         byte[] reversedBytes = new byte[bytes.length];
         int pos = bytes.length - 1;
