@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-class Point {
+class Point implements Comparable<Point> {
 
     final private int x;
     final private int y;
@@ -14,6 +14,7 @@ class Point {
         this.y = y;
     }
 
+    @Override
     public int compareTo(Point other) {
         if (x < other.x) {
             return -1;
