@@ -40,7 +40,7 @@ class TestCaseExample {
 
 public class ValidateTestCaseAnnotation {
 
-    private static final String TARGET_CLASS_NAME = "ch08.ex11.TestCaseExample";
+    private static final String TARGET_CLASS_NAME = "ch08.ex12.TestCaseExample";
 
     @Test
     public void validateTestCases() throws Exception {
